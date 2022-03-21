@@ -1,0 +1,28 @@
+$ rm out.js
+remove out.js? y
+$ ts-node --version
+v10.5.0
+$ ts-node a.ts
+{ five: 5 }
+$ ts-node b.ts
+{ twenty: 20 }
+$ esbuild b.ts --bundle --platform=node --outfile=out.js
+
+  out.js  164b
+
+⚡ Done in 3ms
+$ esbuild --version
+0.14.23
+$ node out.js
+{ five: 5 }
+{ twenty: 20 }
+$ cat out.js
+// a.ts
+var five = 5;
+if (require.main === module)
+  console.log({ five });
+
+// b.ts
+var twenty = five * 4;
+if (require.main === module)
+  console.log({ twenty });
